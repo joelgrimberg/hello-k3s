@@ -7,12 +7,9 @@ spec:
   project: default
   
   source:
-    repoURL: https://github.com/yourusername/yourrepo.git  # Update with your Git repo
+    repoURL: https://github.com/joelgrimberg/hello-k3s.git
     targetRevision: HEAD
-    path: hello-k3s-app/manifests
-    kustomize:
-      # Or use helm, or plain manifests
-      # If using plain manifests, remove kustomize section
+    path: manifests
   
   destination:
     server: https://kubernetes.default.svc
