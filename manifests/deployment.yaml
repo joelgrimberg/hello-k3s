@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-k3s
+  namespace: default
+  labels:
+    app: hello-k3s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-k3s
+  template:
+    metadata:
+      labels:
+        app: hello-k3s
+    spec:
+      containers:
+      - name: hello-k3s
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+          name: http
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html
+        configMap:
+          name: hello-k3s-html
+

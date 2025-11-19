@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-k3s
+  namespace: argocd
+spec:
+  project: default
+  
+  source:
+    repoURL: https://github.com/yourusername/yourrepo.git  # Update with your Git repo
+    targetRevision: HEAD
+    path: hello-k3s-app/manifests
+    kustomize:
+      # Or use helm, or plain manifests
+      # If using plain manifests, remove kustomize section
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
