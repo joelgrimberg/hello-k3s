@@ -64,3 +64,4 @@ kubectl apply -f manifests/
 - If you want to use a custom Docker image, update `deployment.yaml` to use your image instead
 - Make sure cert-manager is configured for automatic TLS certificates
 
+

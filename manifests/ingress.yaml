@@ -5,13 +5,8 @@ metadata:
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - hello.grimbergenv.nl
-    secretName: hello-k3s-tls
   rules:
   - host: hello.grimbergenv.nl
     http:
@@ -23,4 +18,5 @@ spec:
             name: hello-k3s
             port:
               number: 80
+
 
